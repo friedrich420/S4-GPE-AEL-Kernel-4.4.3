@@ -1,0 +1,11 @@
+kernel/drivers/char/adsprpc.ko
+kernel/drivers/scsi/scsi_wait_scan.ko
+kernel/drivers/spi/spidev.ko
+kernel/drivers/input/evbug.ko
+kernel/drivers/media/video/gspca/gspca_main.ko
+kernel/drivers/mmc/card/mmc_test.ko
+kernel/drivers/crypto/msm/qcedev.ko
+kernel/drivers/crypto/msm/qce40.ko
+kernel/drivers/crypto/msm/qcrypto.ko
+kernel/drivers/gud/mckernelapi.ko
+kernel/drivers/gud/mcdrvmodule.ko

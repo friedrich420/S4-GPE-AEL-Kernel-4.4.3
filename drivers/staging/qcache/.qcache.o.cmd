@@ -1,0 +1,1 @@
+cmd_drivers/staging/qcache/qcache.o := /home/friedrich420/kernel/Toolchain/arm-eabi-4.7/bin/arm-eabi-ld -EL    -r -o drivers/staging/qcache/qcache.o drivers/staging/qcache/qcache-main.o drivers/staging/qcache/tmem.o drivers/staging/qcache/fmem.o 

@@ -1,0 +1,1 @@
+cmd_drivers/hwmon/built-in.o :=  /home/friedrich420/kernel/Toolchain/arm-eabi-4.7/bin/arm-eabi-ld -EL    -r -o drivers/hwmon/built-in.o drivers/hwmon/hwmon.o drivers/hwmon/pm8xxx-adc.o drivers/hwmon/pm8xxx-adc-scale.o drivers/hwmon/epm_adc.o 

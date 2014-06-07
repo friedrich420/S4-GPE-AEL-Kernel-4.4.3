@@ -1,0 +1,1 @@
+cmd_drivers/gpu/ion/msm/built-in.o :=  /home/friedrich420/kernel/Toolchain/arm-eabi-4.7/bin/arm-eabi-ld -EL    -r -o drivers/gpu/ion/msm/built-in.o drivers/gpu/ion/msm/msm_ion.o drivers/gpu/ion/msm/ion_cp_common.o 

@@ -1,0 +1,1 @@
+cmd_drivers/gpio/built-in.o :=  /home/friedrich420/kernel/Toolchain/arm-eabi-4.7/bin/arm-eabi-ld -EL    -r -o drivers/gpio/built-in.o drivers/gpio/gpiolib.o drivers/gpio/devres.o drivers/gpio/secgpio_dvs.o drivers/gpio/gpio-msm-common.o drivers/gpio/gpio-msm-v2.o drivers/gpio/pm8xxx-gpio.o drivers/gpio/pm8xxx-mpp.o drivers/gpio/gpio-sx150x.o 

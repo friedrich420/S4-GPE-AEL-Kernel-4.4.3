@@ -1,0 +1,1 @@
+cmd_drivers/platform/msm/built-in.o :=  /home/friedrich420/kernel/Toolchain/arm-eabi-4.7/bin/arm-eabi-ld -EL    -r -o drivers/platform/msm/built-in.o drivers/platform/msm/ssbi.o drivers/platform/msm/sps/built-in.o drivers/platform/msm/avtimer.o 

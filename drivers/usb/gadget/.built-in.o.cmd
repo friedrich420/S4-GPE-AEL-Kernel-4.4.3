@@ -1,0 +1,1 @@
+cmd_drivers/usb/gadget/built-in.o :=  /home/friedrich420/kernel/Toolchain/arm-eabi-4.7/bin/arm-eabi-ld -EL    -r -o drivers/usb/gadget/built-in.o drivers/usb/gadget/udc-core.o drivers/usb/gadget/ci13xxx_msm.o drivers/usb/gadget/g_android.o drivers/usb/gadget/multi_config.o 

@@ -1,0 +1,1 @@
+cmd_drivers/input/evbug.ko := /home/friedrich420/kernel/Toolchain/arm-eabi-4.7/bin/arm-eabi-ld -EL -r  -T /home/friedrich420/kernel/s4/S4GEKernel/scripts/module-common.lds --build-id  -o drivers/input/evbug.ko drivers/input/evbug.o drivers/input/evbug.mod.o

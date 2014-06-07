@@ -1,0 +1,1 @@
+cmd_drivers/char/diag/built-in.o :=  /home/friedrich420/kernel/Toolchain/arm-eabi-4.7/bin/arm-eabi-ld -EL    -r -o drivers/char/diag/built-in.o drivers/char/diag/diagchar.o drivers/char/diag/diagfwd_bridge.o drivers/char/diag/diagfwd_hsic.o drivers/char/diag/diagfwd_smux.o 

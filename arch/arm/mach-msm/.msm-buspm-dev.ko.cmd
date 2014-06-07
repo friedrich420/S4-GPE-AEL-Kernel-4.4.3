@@ -1,0 +1,1 @@
+cmd_arch/arm/mach-msm/msm-buspm-dev.ko := /home/friedrich420/kernel/Toolchain/arm-eabi-4.7/bin/arm-eabi-ld -EL -r  -T /home/friedrich420/kernel/s4/S4GEKernel/scripts/module-common.lds --build-id  -o arch/arm/mach-msm/msm-buspm-dev.ko arch/arm/mach-msm/msm-buspm-dev.o arch/arm/mach-msm/msm-buspm-dev.mod.o

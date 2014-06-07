@@ -1,0 +1,1 @@
+cmd_sound/soc/codecs/snd-soc-wcd9304.o := /home/friedrich420/kernel/Toolchain/arm-eabi-4.7/bin/arm-eabi-ld -EL    -r -o sound/soc/codecs/snd-soc-wcd9304.o sound/soc/codecs/wcd9304.o sound/soc/codecs/wcd9304-tables.o 

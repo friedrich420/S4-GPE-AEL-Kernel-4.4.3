@@ -1,0 +1,1 @@
+cmd_sound/soc/msm/qdsp6/built-in.o :=  /home/friedrich420/kernel/Toolchain/arm-eabi-4.7/bin/arm-eabi-ld -EL    -r -o sound/soc/msm/qdsp6/built-in.o sound/soc/msm/qdsp6/q6asm.o sound/soc/msm/qdsp6/q6adm.o sound/soc/msm/qdsp6/q6afe.o sound/soc/msm/qdsp6/q6voice.o 
