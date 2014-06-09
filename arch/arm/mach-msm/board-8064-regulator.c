@@ -52,7 +52,7 @@ VREG_CONSUMERS(L4) = {
 	REGULATOR_SUPPLY("HSUSB_1p8",		"msm_otg"),
 #ifdef CONFIG_WCNSS_CORE
 	REGULATOR_SUPPLY("iris_vddxo",		"wcnss_wlan.0"),
-#endif	
+#endif
 #ifdef CONFIG_MMC_MSM_SDC4_SUPPORT
 	REGULATOR_SUPPLY("sdc_vdd",	"msm_sdcc.3"),
 #endif
@@ -84,7 +84,7 @@ VREG_CONSUMERS(L8) = {
 	REGULATOR_SUPPLY("cam_vana",		"4-0020"),
 	REGULATOR_SUPPLY("cam_vana",		"7-006a"),
 	REGULATOR_SUPPLY("cam_vana",		"4-003e"),
-	REGULATOR_SUPPLY("cam_vana",		"4-002d"),	
+	REGULATOR_SUPPLY("cam_vana",		"4-002d"),
 #ifdef CONFIG_CAMERA_USE_GSBI7
 	REGULATOR_SUPPLY("cam_vana",		"7-003e"),
 #endif
@@ -116,7 +116,7 @@ VREG_CONSUMERS(L12) = {
 	REGULATOR_SUPPLY("cam_vdig",		"7-006a"),
 	REGULATOR_SUPPLY("8921_l12",		NULL),
 	REGULATOR_SUPPLY("cam_vdig",		"4-003e"),
-	REGULATOR_SUPPLY("cam_vdig",		"4-002d"),	
+	REGULATOR_SUPPLY("cam_vdig",		"4-002d"),
 #ifdef CONFIG_CAMERA_USE_GSBI7
 	REGULATOR_SUPPLY("cam_vdig",		"7-003e"),
 #endif
@@ -145,7 +145,7 @@ VREG_CONSUMERS(L16) = {
 	REGULATOR_SUPPLY("cam_vaf",		"4-0020"),
 	REGULATOR_SUPPLY("cam_vaf",		"7-006a"),
 	REGULATOR_SUPPLY("cam_vaf",		"4-003e"),
-	REGULATOR_SUPPLY("cam_vaf",		"4-002d"),	
+	REGULATOR_SUPPLY("cam_vaf",		"4-002d"),
 #ifdef CONFIG_CAMERA_USE_GSBI7
 	REGULATOR_SUPPLY("cam_vaf",		"7-003e"),
 #endif
@@ -279,7 +279,7 @@ VREG_CONSUMERS(LVS5) = {
 	REGULATOR_SUPPLY("cam_vio",		"4-0020"),
 	REGULATOR_SUPPLY("cam_vio",		"7-006a"),
 	REGULATOR_SUPPLY("cam_vio",		"4-003e"),
-	REGULATOR_SUPPLY("cam_vio",		"4-002d"),	
+	REGULATOR_SUPPLY("cam_vio",		"4-002d"),
 #ifdef CONFIG_CAMERA_USE_GSBI7
 	REGULATOR_SUPPLY("cam_vio",		"7-003e"),
 #endif
@@ -727,15 +727,31 @@ mpq8064_gpio_regulator_pdata[] __devinitdata = {
 /* SAW regulator constraints */
 struct regulator_init_data msm8064_saw_regulator_pdata_8921_s5 =
 	/*	      ID  vreg_name	       min_uV   max_uV */
-	SAW_VREG_INIT(S5, "8921_s5",	       850000, 1300000);
+#ifdef CONFIG_CPU_OVERCLOCK
+	SAW_VREG_INIT(S5, "8921_s5",	       600000, 1450000);
+#else
+	SAW_VREG_INIT(S5, "8921_s5",	       600000, 1300000);
+#endif
 struct regulator_init_data msm8064_saw_regulator_pdata_8921_s6 =
-	SAW_VREG_INIT(S6, "8921_s6",	       850000, 1300000);
+#ifdef CONFIG_CPU_OVERCLOCK
+	SAW_VREG_INIT(S6, "8921_s6",	       600000, 1450000);
+#else
+	SAW_VREG_INIT(S6, "8921_s6",	       600000, 1300000);
+#endif
 
 struct regulator_init_data msm8064_saw_regulator_pdata_8821_s0 =
 	/*	      ID       vreg_name	min_uV  max_uV */
-	SAW_VREG_INIT(8821_S0, "8821_s0",       850000, 1300000);
+#ifdef CONFIG_CPU_OVERCLOCK
+	SAW_VREG_INIT(8821_S0, "8821_s0",       600000, 1450000);
+#else
+	SAW_VREG_INIT(8821_S0, "8821_s0",       600000, 1300000);
+#endif
 struct regulator_init_data msm8064_saw_regulator_pdata_8821_s1 =
-	SAW_VREG_INIT(8821_S1, "8821_s1",       850000, 1300000);
+#ifdef CONFIG_CPU_OVERCLOCK
+	SAW_VREG_INIT(8821_S1, "8821_s1",       600000, 1450000);
+#else
+	SAW_VREG_INIT(8821_S1, "8821_s1",       600000, 1300000);
+#endif
 
 /* PM8921 regulator constraints */
 struct pm8xxx_regulator_platform_data
@@ -850,7 +866,7 @@ apq8064_rpm_regulator_init_data[] __devinitdata = {
 	/*	ID a_on pd ss min_uV   max_uV   supply    sys_uA init_ip */
 	RPM_LDO(L1,  1, 1, 0, 1100000, 1100000, "8921_s4",     0,  1000),
 	RPM_LDO(L2,  0, 1, 0, 1200000, 1200000, "8921_s4",     0,     0),
-	RPM_LDO(L3,  0, 1, 0, 3075000, 3075000, NULL,          0,     0),
+	RPM_LDO(L3,  0, 1, 0, 3075000, 3300000, NULL,          0,     0),
 	RPM_LDO(L4,  1, 1, 0, 1800000, 1800000, NULL,          0, 10000),
 	RPM_LDO(L5,  0, 1, 0, 2950000, 2950000, NULL,          0,     0),
 	RPM_LDO(L6,  0, 1, 0, 2950000, 2950000, NULL,          0,     0),
@@ -966,6 +982,19 @@ void __init configure_apq8064_pm8917_power_grid(void)
 			rpm_data->init_data.num_consumer_supplies
 				= ARRAY_SIZE(vreg_consumers_8917_S1);
 		}
+
+		/*
+		 * Currently min/max voltage level for LD03 was set to 3.075V.
+		 * But some Full speed USB headsets requires higher cross over
+		 * voltage. The cross over voltage is directly proportional
+		 * to the phy 3.3V rail voltage. So modified the max voltage
+		 * level of LD03 to 3.3V. But apq8064_rpm_regulator_init_data
+		 * is shared between PM8921 and PM8917, so set max_uV back to
+		 * 3.075V for PM8917.
+		 */
+		 if (rpm_data->id == RPM_VREG_ID_PM8921_L3)
+			rpm_data->init_data.constraints.max_uV = 3075000;
+
 	}
 
 	/*
@@ -974,3 +1003,4 @@ void __init configure_apq8064_pm8917_power_grid(void)
 	 */
 	apq8064_rpm_regulator_pdata.version = RPM_VREG_VERSION_8960_PM8917;
 }
+
